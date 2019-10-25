@@ -5,14 +5,15 @@ Created on Fri Oct 25 15:47:30 2019
 @author: Sachi
 """
 
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String, Integer, Sequence, DateTime
 
 from models.base import Base
 
 class User(Base):
     __tablename__ = "userLogs"
-
-    username = Column(String, primary_key=True)
+    
+    id_ = Column(Integer, Sequence('trigger_id_seq'), primary_key=True)
+    username = Column(String)
     timeStamp = Column(DateTime)
 
     def get_userId(self):
